@@ -33,19 +33,11 @@
   },
   "notes": [
     {
-      "text": "Bark Server has no authentication by default: anyone who can reach port 8080 can register a device key and send pushes. Keep it on a private network or behind an auth-protected reverse proxy, and set BARK_SERVER_BASIC_AUTH_USER / BARK_SERVER_BASIC_AUTH_PASSWORD to enable HTTP Basic auth.",
+      "text": "Bark Server has no authentication by default, set BARK_SERVER_BASIC_AUTH_USER / BARK_SERVER_BASIC_AUTH_PASSWORD to enable HTTP Basic auth.",
       "type": "warning"
     },
     {
-      "text": "The container needs outbound access to Apple's push service (api.push.apple.com:443).",
-      "type": "info"
-    },
-    {
-      "text": "Device keys are stored in /opt/bark-server_data, outside the application directory, so they survive updates. Include it in your backups.",
-      "type": "info"
-    },
-    {
-      "text": "Verify the server with: curl http://<IP>:8080/ping — it returns {\"code\":200,\"message\":\"pong\"}. The web UI itself lives in the Bark iOS app, which is pointed at this URL.",
+      "text": "Verify the server with: curl http://<IP>:8080/ping — it returns {\"code\":200,\"message\":\"pong\"}.",
       "type": "info"
     }
   ]

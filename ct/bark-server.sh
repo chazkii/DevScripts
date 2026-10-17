@@ -37,7 +37,11 @@ function update_script() {
     systemctl stop bark-server
     msg_ok "Stopped Bark Server"
 
+    create_backup /opt/bark-server/bark.db
+
     CLEAN_INSTALL=1 fetch_and_deploy_gh_release "bark-server" "Finb/bark-server" "singlefile" "latest" "/opt/bark-server" "bark-server_linux_$(arch_resolve "amd64" "armv8")"
+
+    restore_backup
 
     msg_info "Starting Bark Server"
     systemctl start bark-server

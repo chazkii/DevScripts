@@ -16,7 +16,6 @@ update_os
 fetch_and_deploy_gh_release "bark-server" "Finb/bark-server" "singlefile" "latest" "/opt/bark-server" "bark-server_linux_$(arch_resolve "amd64" "armv8")"
 
 msg_info "Creating Service"
-mkdir -p /opt/bark-server_data
 cat <<EOF >/etc/systemd/system/bark-server.service
 [Unit]
 Description=Bark Server
@@ -27,7 +26,7 @@ Type=simple
 User=root
 WorkingDirectory=/opt/bark-server
 Environment=BARK_SERVER_ADDRESS=0.0.0.0:8080
-Environment=BARK_SERVER_DATA_DIR=/opt/bark-server_data
+Environment=BARK_SERVER_DATA_DIR=/opt/bark-server
 ExecStart=/opt/bark-server/bark-server
 Restart=on-failure
 RestartSec=5
